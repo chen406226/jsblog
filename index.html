@@ -93,10 +93,13 @@
 
     <!-- Import CSS -->
     
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="material_css"></style>
+        <script>document.documentElement.style.display=""</script>
         <!-- <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script> -->
+        <!-- <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++; -->
+    </script>
 <link rel="stylesheet" href="/css/style.css">
-
+<link rel="stylesheet" href="/css/material.min.css">
     <!-- Config CSS -->
 
 <!-- Other Styles -->
@@ -260,10 +263,12 @@
 
         <body id="scheme-Paradox" class="lazy">
             <div>
-                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div>
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
+                
+                <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                    <!-- Main Container -->
+                    <main  class="material-layout__content" id="main">
+                    <div id="change_bg">
+                    </div>
                     <!-- Top Anchor -->
                     <div id="top"></div>
                     <!-- Hamburger Button -->
@@ -643,10 +648,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Theme Material -->
 
     <!-- <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank"> -->
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        <!-- <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
             主题 - Material
             <span class="sidebar-badge badge-circle">i</span>
-        </div>
+        </div> -->
     <!-- </a> -->
     </div>
     <!-- Sidebar Image -->
