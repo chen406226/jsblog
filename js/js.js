@@ -2276,17 +2276,17 @@ $(document).ready(function() {
     burger.addEventListener(
         'click',
         function() {
-            var child;
+            var child ;
+            //this.childNodes[0].classList
+            // child.contains('MD-burger-arrow')
+            // if (child.includes('MD-burger-arrow')) {
 
-            child = this.childNodes[0].classList;
-
-            if (child.contains('MD-burger-arrow')) {
-                child.remove('MD-burger-arrow');
-                child.add('MD-burger-line');
-            } else {
-                child.remove('MD-burger-line');
-                child.add('MD-burger-arrow');
-            }
+            //     child.remove('MD-burger-arrow');
+            //     child.add('MD-burger-line');
+            // } else {
+            //     child.remove('MD-burger-line');
+            //     child.add('MD-burger-arrow');
+            // }
 
         });
 
