@@ -614,7 +614,7 @@
 		var des = $des.val()
 		$.ajax({
 			type:"POST",
-			url:'http://localhost:9999/save',
+			url:window.location.origin+':9999/save',
 			data:{
 				name:name,
 				link:link,
@@ -634,7 +634,7 @@
 	function getlist(){
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:9999/find",
+			url:window.location.origin+":9999/find",
 			success:function(data){
 				addele(data.list);
 			},
