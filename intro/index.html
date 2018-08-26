@@ -1,11 +1,10 @@
 
 <!DOCTYPE html>
-<!-- saved from url=(0028)https://hacpai.com/halt.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>Intro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/img/IS.png">
+        <link rel="icon" type="image/png" href="/img/IS.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <style>
             html {
@@ -40,15 +39,52 @@
                 margin: 0 auto;
                 display: block;
             }
+            .rotat{
+                transform-origin:25% 50%;
+                transform: rotate(90deg);
+            }
         </style>
     <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;Java&quot;:-1}"><script type="text/javascript" src="chrome-extension://fhhdlnnepfjhlhilgmeepgkhjmhhhjkh/js/detector.js"></script></head>
 
     <body class="body--ready" data-pinterest-extension-installed="cr1.39.1">
-        <canvas class="canvas" width="1820" height="905"></canvas>
+        <canvas id="cv" class="canvas" width="1820" height="905"></canvas>
         <!-- <p class="text">
             <a href="http://blog.Insane.cn" target="_blank">blog.Insane.cn</a>
         </p> -->
         <script>
+            var cv = document.getElementById('cv')
+            var clientWidth = window.innerWidth;
+            var clientHeight = window.innerHeight;
+            var isPhone = false;
+            var browser={
+                versions:function(){
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    return {//移动终端浏览器版本信息   
+                        trident: u.indexOf('Trident') > -1, //IE内核  
+                        presto: u.indexOf('Presto') > -1, //opera内核  
+                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核  
+                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核  
+                        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端  
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端  
+                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器  
+                        iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器  
+                        iPad: u.indexOf('iPad') > -1, //是否iPad    
+                        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部  
+                    };
+                }(),
+                language:(navigator.browserLanguage || navigator.language).toLowerCase()
+            }
+
+            if(browser.versions.mobile || browser.versions.ios || browser.versions.android ||browser.versions.iPhone || browser.versions.iPad){
+                isPhone = true
+                // cv.className = cv.className = ' rotat'
+                cv.style.transform = 'rotate(90deg)';
+                cv.style.transformOrigin = '25% 50%';
+                clientWidth = window.innerHeight;
+                clientHeight = window.innerWidth;
+            }
+
+
             var S = {
                 init: function () {
                     S.Drawing.init('.canvas');
@@ -91,8 +127,10 @@
                         requestFrame.call(window, this.loop.bind(this));
                     },
                     adjustCanvas: function () {
-                        canvas.width = window.innerWidth - 100;
-                        canvas.height = window.innerHeight - 30;
+                        // canvas.width = window.innerWidth - 100;
+                        canvas.width = clientWidth - 20;
+                        // canvas.height = window.innerHeight - 30;
+                        canvas.height = clientHeight - 10;
                     },
                     clearFrame: function () {
                         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -361,8 +399,10 @@
                         fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
 
                 function fit() {
-                    shapeCanvas.width = Math.floor(window.innerWidth / gap) * gap;
-                    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;
+                    // shapeCanvas.width = Math.floor(window.innerWidth / gap) * gap;
+                    shapeCanvas.width = Math.floor(clientWidth / gap) * gap;
+                    // shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;
+                    shapeCanvas.height = Math.floor(clientHeight / gap) * gap;
                     shapeContext.fillStyle = 'red';
                     shapeContext.textBaseline = 'middle';
                     shapeContext.textAlign = 'center';

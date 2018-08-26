@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html style="display: none;" lang="zh">
-    
-    <!-- <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas> -->
+    <meta charset="utf-8">
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
     <script>
     var browser={
         versions:function(){
@@ -23,15 +23,10 @@
     }
 
     if(browser.versions.mobile || browser.versions.ios || browser.versions.android ||browser.versions.iPhone || browser.versions.iPad){
-        var m = document.createElement('div')
-        m.innerHTML='<canvas id="live2dcanvas" width="50" height="100" class="live2d"></canvas>'
-        // document.html.appendChild(m)
+        var el = document.getElementById("live2dcanvas")
+        el.width = 50
+        el.height = 100
     }else{
-        var m = document.createElement('div')
-        // m.innerHTML='<canvas id="live2dcanvas" width="50" height="100" class="live2d"></canvas>'
-        m.innerHTML = '<canvas id="live2dcanvas" width="100" height="200" class="live2d"></canvas>'
-        console.log(document.appendChild(m))
-        // document.html.appendChild(m)
     }
     </script>
     <script type="text/javascript" src="/live2d/script.js"></script>
@@ -607,12 +602,12 @@
         </li>
         
     
-        <!-- <li>
+        <li>
             <a href="/gallery" title="映像">
                 <i class="material-icons sidebar-material-icons">photo</i>
                 映像
             </a>
-        </li> -->
+        </li>
         
     
         <li>

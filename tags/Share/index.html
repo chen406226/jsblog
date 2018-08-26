@@ -20,12 +20,9 @@
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <!-- Title -->
-    
     <title>
-        
-            tags | 
-        
-        Insane&#39;s Soul
+            美句 | 
+        Insane&#39;s Blog
     </title>
 
     <!-- Meta & Info -->
@@ -62,29 +59,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Insane&#39;s Soul">
-
-    <!-- Site Verification -->
-    
-    
-
-    <!-- RSS -->
-    
-
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-
-    <!-- Import CSS -->
     <script>document.documentElement.style.display=""</script>
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="/css/material.min.css">
-    <!-- Config CSS -->
-
-<!-- Other Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/material.min.css">
 <style>
   body, html {
     font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -150,28 +127,17 @@
     color: #00838F;
     text-decoration: underline;
   }
-
 </style>
-
-
-<!-- Theme Background Related-->
-
     <style>
       body{
         background-color: #F5F5F5;
       }
-
       /* blog_info bottom background */
       #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
         background-color: #fff;
       }
     </style>
-
-
-
-
 <!-- Fade Effect -->
-
     <style>
       .fade {
         transition: all 800ms linear;
@@ -187,31 +153,11 @@
         opacity: 0;
       }
     </style>
-<!-- Import Font -->
-<!-- Import Roboto -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"> -->
 <!-- Import Material Icon -->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Import jQuery -->
         <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
-    <!-- The Open Graph protocol -->
-    <!-- <meta property="og:url" content="http://blog.Insane.cn">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="tags | Insane&#39;s Blog">
-    <meta property="og:image" content="http://blog.Insane.cn/img/x.png" />
-    <meta property="og:description" content=""> -->
-    <!-- The Twitter Card protocol -->
-    <!-- <meta name="twitter:title" content="tags | Insane&#39;s Blog">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="http://blog.Insane.cn/img/x.png">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://blog.Insane.cn" /> -->
-
-    <!-- Add canonical link for SEO -->
-        <!-- <link rel="canonical" href="http://blog.Insane.cn/tags/index.html" /> -->
-    <!-- Structured-data for SEO -->
-    <!-- Analytics -->
-    <!-- Custom Head -->
 </head>
         <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
@@ -225,67 +171,511 @@
                         </button>
                     <!-- Post TOC -->
 <!-- Layouts -->
-
-    <!-- Tags Cloud -->
+    <!-- Single Timeline Page -->
     <style>
-    #bottom{
-        position: relative;
-    }
-
-    @media screen and (max-width: 480px) {
-        .material-tagscloud{
-            margin: 6em 2em 0;
-        }
-    }
-
-    .material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-    }
-
-    .material-tagscloud a:hover{
-        transition: .6s;
-        opacity: 1;
-        background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+	.md-container {
+		width: 90%;
+		max-width: 1170px;
+		margin: 0 auto;
+	}
+	.md-container::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+	#md-timeline {
+		position: relative;
+		padding: 2em 0;
+		margin-top: 2em;
+		margin-bottom: 2em;
+	}
+	@media screen and (max-device-width:480px){
+		#md-timeline {
+			margin-top: 6em;
+		}
+	}
+	#md-timeline::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 18px;
+		height: 100%;
+		width: 2px;
+		background: #d7e4ed;
+	}
+	.md-timeline-title {
+		font-size: 20px;
+		line-height: 24px;
+	}
+	.md-timeline-content a {
+		text-decoration: none;
+	}
+	.md-timeline-info {
+		height: 20px;
+		width: 100%;
+		margin: 10px 0px;
+	}
+	.md-timeline-info-span {
+		float: right;
+		margin-right: 10px;
+		text-align: right;
+	}
+	.md-timeline-excerpt {
+	    	clear: right; 
+	}
+	@media only screen and (min-width: 1170px) {
+		#md-timeline {
+			margin-top: 3em;
+			margin-bottom: 3em;
+		}
+		#md-timeline::before {
+			left: 50%;
+			margin-left: -2px;
+		}
+	}
+	.md-timeline-block {
+		position: relative;
+		margin: 2em 0;
+	}
+	.md-timeline-block:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.md-timeline-block:first-child {
+		margin-top: 0;
+	}
+	.md-timeline-block:last-child {
+		margin-bottom: 0;
+	}
+	@media only screen and (min-width: 1170px) {
+		.md-timeline-block {
+			margin: 4em 0;
+		}
+		.md-timeline-block:first-child {
+			margin-top: 0;
+		}
+		.md-timeline-block:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.md-timeline-date {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 60px;
+		height: 40px;
+		box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+	}
+	.md-timeline-date.blue {
+		background: #0D395F;
+		-webkit-box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+		box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+	}
+	@media only screen and (min-width: 1170px) {
+		.md-timeline-date {
+			width: 60px;
+			height: 60px;
+			left: 50%;
+			margin-left: -30px;
+			/* Force Hardware Acceleration in WebKit */
+			transform: translateZ(0);
+			/* visibility: hidden; */
+		}
+		.cssanimations .md-timeline-date.is-hidden {
+			visibility: hidden;
+		}
+		.cssanimations .md-timeline-date.bounce-in {
+			visibility: visible;
+			-webkit-animation: md-bounce-1 0.6s;
+			-moz-animation: md-bounce-1 0.6s;
+			animation: md-bounce-1 0.6s;
+		}
+	}
+	@-webkit-keyframes md-bounce-1 {
+		0% {
+			opacity: 0;
+			-webkit-transform: scale(0.5);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: scale(1.2);
+		}
+		100% {
+			-webkit-transform: scale(1);
+		}
+	}
+	@-moz-keyframes md-bounce-1 {
+		0% {
+			opacity: 0;
+			-moz-transform: scale(0.5);
+		}
+		60% {
+			opacity: 1;
+			-moz-transform: scale(1.2);
+		}
+		100% {
+			-moz-transform: scale(1);
+		}
+	}
+	@keyframes md-bounce-1 {
+		0% {
+			opacity: 0;
+			-webkit-transform: scale(0.5);
+			-moz-transform: scale(0.5);
+			-ms-transform: scale(0.5);
+			-o-transform: scale(0.5);
+			transform: scale(0.5);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: scale(1.2);
+			-moz-transform: scale(1.2);
+			-ms-transform: scale(1.2);
+			-o-transform: scale(1.2);
+			transform: scale(1.2);
+		}
+		100% {
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			-ms-transform: scale(1);
+			-o-transform: scale(1);
+			transform: scale(1);
+		}
+	}
+	.md-timeline-content {
+		position: relative;
+		margin-left: 60px;
+		background: white;
+		padding: 1em;
+		-webkit-box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+		box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.75);
+	}
+	.md-timeline-content:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.md-timeline-content h2 {
+		color: #303e49;
+	}
+	.md-timeline-content p, .md-timeline-content .md-read-more, .md-timeline-content .md-date {
+		font-size: 13px;
+		font-size: 0.8125rem;
+	}
+	.md-timeline-content .md-read-more, .md-timeline-content .md-date {
+		display: inline-block;
+	}
+	.md-timeline-content p {
+		margin: 1em 0;
+		line-height: 1.6;
+	}
+	.md-timeline-content .md-read-more {
+		float: right;
+		padding: .8em 1em;
+		background: #acb7c0;
+		color: white;
+		border-radius: 0.25em;
+	}
+	.md-date {
+		color: white;
+		text-align: center;
+	}
+	.no-touch .md-timeline-content .md-read-more:hover {
+		background-color: #bac4cb;
+	}
+	.md-timeline-content::before {
+		content: '';
+		position: absolute;
+		top: 16px;
+		right: 100%;
+		height: 0;
+		width: 0;
+		border: 7px solid transparent;
+		border-right: 7px solid white;
+	}
+	@media only screen and (min-width: 768px) {
+		.md-timeline-content h2 {
+			font-size: 20px;
+			font-size: 1.25rem;
+		}
+		.md-timeline-content p {
+			font-size: 16px;
+			font-size: 1rem;
+		}
+		.md-timeline-content .md-read-more {
+			font-size: 14px;
+			font-size: 0.875rem;
+		}
+	}
+	@media only screen and (min-width: 1170px) {
+		.md-date {
+			text-align: center;
+			/* margin-top: 10px; */
+			line-height: 20px;
+		}
+		.md-timeline-content {
+			margin-left: 0;
+			padding: 1.6em;
+			width: 45%;
+		}
+		.md-timeline-content::before {
+			top: 24px;
+			left: 100%;
+			border-color: transparent;
+			border-left-color: white;
+		}
+		.md-timeline-content .md-read-more {
+			float: left;
+		}
+		.md-timeline-block:nth-child(even) .md-timeline-content {
+			float: right;
+		}
+		.md-timeline-block:nth-child(even) .md-timeline-content::before {
+			top: 24px;
+			left: auto;
+			right: 100%;
+			border-color: transparent;
+			border-right-color: white;
+		}
+		.md-timeline-block:nth-child(even) .md-timeline-content .md-read-more {
+			float: right;
+		}
+		.cssanimations .md-timeline-content.is-hidden {
+			visibility: hidden;
+		}
+		.cssanimations .md-timeline-content.bounce-in {
+			visibility: visible;
+			-webkit-animation: md-bounce-2 0.6s;
+			-moz-animation: md-bounce-2 0.6s;
+			animation: md-bounce-2 0.6s;
+		}
+	}
+	@media only screen and (min-width: 1170px) {
+		/* inverse bounce effect on even content blocks */
+		.cssanimations .md-timeline-block:nth-child(even) .md-timeline-content.bounce-in {
+			-webkit-animation: md-bounce-2-inverse 0.6s;
+			-moz-animation: md-bounce-2-inverse 0.6s;
+			animation: md-bounce-2-inverse 0.6s;
+		}
+	}
+	@-webkit-keyframes md-bounce-2 {
+		0% {
+			opacity: 0;
+			-webkit-transform: translateX(-100px);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: translateX(20px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
+		}
+	}
+	@-moz-keyframes md-bounce-2 {
+		0% {
+			opacity: 0;
+			-moz-transform: translateX(-100px);
+		}
+		60% {
+			opacity: 1;
+			-moz-transform: translateX(20px);
+		}
+		100% {
+			-moz-transform: translateX(0);
+		}
+	}
+	@keyframes md-bounce-2 {
+		0% {
+			opacity: 0;
+			-webkit-transform: translateX(-100px);
+			-moz-transform: translateX(-100px);
+			-ms-transform: translateX(-100px);
+			-o-transform: translateX(-100px);
+			transform: translateX(-100px);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: translateX(20px);
+			-moz-transform: translateX(20px);
+			-ms-transform: translateX(20px);
+			-o-transform: translateX(20px);
+			transform: translateX(20px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
+			-moz-transform: translateX(0);
+			-ms-transform: translateX(0);
+			-o-transform: translateX(0);
+			transform: translateX(0);
+		}
+	}
+	@-webkit-keyframes md-bounce-2-inverse {
+		0% {
+			opacity: 0;
+			-webkit-transform: translateX(100px);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: translateX(-20px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
+		}
+	}
+	@-moz-keyframes md-bounce-2-inverse {
+		0% {
+			opacity: 0;
+			-moz-transform: translateX(100px);
+		}
+		60% {
+			opacity: 1;
+			-moz-transform: translateX(-20px);
+		}
+		100% {
+			-moz-transform: translateX(0);
+		}
+	}
+	@keyframes md-bounce-2-inverse {
+		0% {
+			opacity: 0;
+			-webkit-transform: translateX(100px);
+			-moz-transform: translateX(100px);
+			-ms-transform: translateX(100px);
+			-o-transform: translateX(100px);
+			transform: translateX(100px);
+		}
+		60% {
+			opacity: 1;
+			-webkit-transform: translateX(-20px);
+			-moz-transform: translateX(-20px);
+			-ms-transform: translateX(-20px);
+			-o-transform: translateX(-20px);
+			transform: translateX(-20px);
+		}
+		100% {
+			-webkit-transform: translateX(0);
+			-moz-transform: translateX(0);
+			-ms-transform: translateX(0);
+			-o-transform: translateX(0);
+			transform: translateX(0);
+		}
+	}
+    .marginli {
+        margin-bottom: 15px;
     }
 </style>
 
-<div class=" material-tagscloud">
-    <div class="material-post mdl-grid">
-        <a href="/categories/Tech/" style="margin:5px; font-size: 16px; color: #757575">Tech</a>
-        <a href="/tags/Dic/" style="margin:5px;font-size: 16px; color: #757575">Dic</a>
-        <a href="/tags/Share/" style="margin:5px;font-size: 16px; color: #757575">Share</a>
-    </div>
-</div>
+<section id="md-timeline" class="md-container">
+    <ul id="ulcon">
+        <li class="marginli">
+            <div class="md-timeline-block">
+                <div class="md-timeline-date blue">
+                    <div class="md-date">Jul 17 2018</div>
+                </div>
+                <div class="md-timeline-content">
+                    <div class="md-timeline-title">
+                        <strong>有道推荐</strong>
+                    </div>
+                    <div class="md-timeline-info">
+                        <span class="md-timeline-info-span">Tags:
+                            <a class="tag-link" href="/tags/Dic/">Dic</a>
+                        </span>
+                    </div>
+                    <p class="md-timeline-excerpt">
+                        The passing years steal from us one thing after another<br/>
+                        <samp>逝去的年华从我们这偷走一样又一样东西。</samp>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+<footer style="margin:0 auto;width:90%;">
+	<div>
+		<h5>添加分享</h5><cite>  输入你喜欢的名称-分享的链接地址-分享内容的描述</cite>
+		<input  style="margin: 10px;" type="text" maxlength="20" class="form-control" id="usname" aria-describedby="name" placeholder="输入过客昵称(限制字符20)">
+		<input style="margin: 10px;" type="text" class="form-control" id="linkurl" aria-describedby="name" placeholder="输入链接地址">
+		<input style="margin: 10px;" type="text" class="form-control" id="linkdes" aria-describedby="name" placeholder="输入链接描述">
+		<button type="submit" onclick="submitshare()" class="btn btn-primary">提交</button>
+	</div>
+</footer>
+<script>
+	var $name = $("#usname");
+	var $link = $("#linkurl");
+	var $des = $("#linkdes");
+	var $ulcon = $("#ulcon");
+	function submitshare(){
+		console.log(234234234)
+		var name = $name.val()
+		var link = $link.val()
+		var des = $des.val()
+		$.ajax({
+			type:"POST",
+			url:'http://localhost:9999/save',
+			data:{
+				name:name,
+				link:link,
+				speaking:des
+			},
+			dataType:"json",
+			success:function(data){
+				getlist();
+			},
+			error:function(){
+				console.log('请求失败')
+			}
+		})
+	}
 
 
-<script type="text/ls-javascript" id="page-tagcloud-script">
+	function getlist(){
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:9999/find",
+			success:function(data){
+				addele(data.list);
+			},
+			error:function(){
+				console.log('请求失败')
+			}
+		})
+	}
+	function addele(list){
+		if (list.length==0) return;
+		$ulcon.html("")
+		for (var i = 0; i < list.length; i++) {
+			var data = list[i];
+			console.log(data)
+			var date = new Date(data.date).toString().slice(4,21);
+			var name = data.name;
+			var speak = data.speak;
+			var url = data.url;
+			console.log(url.search(/http/))
+			if (url.search(/http/)==-1) {
+				url = 'http://'+url;
+			}
+			var $el = $('<li class="marginli"><div class="md-timeline-block"><div class="md-timeline-date blue"><div class="md-date">'+date+'</div></div><div class="md-timeline-content"><div class="md-timeline-title"><strong>'+name+'</strong></div><a class="tag-link" href="'+url+'"><p class="md-timeline-excerpt">'+speak+'</p></a></div></div></li>')
+			$ulcon.append($el);
+		}
+	}
+	getlist(); //初始化数据
+</script>
+<script type="text/ls-javascript" id="page-timeline-script">
     var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() ) < $(window).height() ) {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight() )<$(window).height() ) {
             var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
             $('#bottom').css('bottom', '-' + footerBottom + 'px');
         }
     };
-
     $(document).ready(function() {
         adjustFooter();
     });
 </script>
-
-
-
-
-
-                    
                         <!-- Overlay For Active Sidebar -->
 <div class="sidebar-overlay"></div>
-
 <!-- Material sidebar -->
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
@@ -293,7 +683,6 @@
         <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
     <!-- Top bar -->
     <div class="top-bar"></div>
-
     <!-- Sidebar toggle button -->
     <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
         <i class="material-icons">clear_all</i>
@@ -307,7 +696,6 @@
     <div class="sidebar-image">
         <img src="/img/head.jpg" alt="Insane's avatar">
     </div>
-
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
         172221516@qq.com
@@ -319,15 +707,12 @@
     <!-- User dropdown  -->
     <li class="dropdown">
         <ul id="settings-dropdown" class="dropdown-menu">
-                <li>
-                    <a href="mailto: 172221516@qq.com" target="_blank" title="Email Me">
-                        
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        
-                        Email Me
-                    </a>
-                </li>
-            
+            <li>
+                <a href="mailto: 172221516@qq.com" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                    Email Me
+                </a>
+            </li>
         </ul>
     </li>
 
@@ -341,8 +726,6 @@
                 主页
             </a>
         </li>
-        
-    
 
     <!-- Archives  -->
     
@@ -355,13 +738,13 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li>
-                    <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017
-                        <span class="sidebar_archives-count">1</span>
-                    </a>
-                </li>
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
+        
+    
+
     <!-- Categories  -->
     
         <li class="dropdown">
@@ -374,21 +757,24 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="sidebar_archives-link" href="/categories/Tech/">Tech<span class="sidebar_archives-count">1</span></a>
-                    <a class="sidebar_archives-link" href="/categories/Dic/">Dic<span class="sidebar_archives-count">1</span></a>
-                </li>
+                <a class="sidebar_archives-link" href="/categories/Tech/">Tech<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
             <li class="divider"></li>
+        
+    
+
     <!-- Pages  -->
     
-        <li>
+        <!-- <li>
             <a href="/intro" title="简介">
+                
                     <i class="material-icons sidebar-material-icons">face</i>
+                
                 简介
             </a>
-        </li>    
+        </li> -->
         <!-- <li>
             <a href="/gallery" title="映像">
                 
@@ -396,56 +782,67 @@
                 
                 映像
             </a>
-        </li> -->
+        </li>
+         -->
+    
         <li>
             <a href="/tags" title="标签云">
                 
                     <i class="material-icons sidebar-material-icons">loyalty</i>
+                
                 标签云
             </a>
         </li>
+        
+    
         <li>
             <a href="/timeline" title="时间轴">
                 
                     <i class="material-icons sidebar-material-icons">sort</i>
+                
                 时间轴
             </a>
         </li>
+        
+    
         <li>
             <a href="/about" title="关于我">
                 
                     <i class="material-icons sidebar-material-icons">person</i>
+                
                 关于我
             </a>
         </li>
+        
             <li class="divider"></li>
+        
+    
+
     <!-- Article Number  -->
+    
         <!-- <li>
             <a href="/archives">
                 文章总数
                 <span class="sidebar-badge">1</span>
             </a>
         </li> -->
+        
+    
 </ul>
-    <div class="sidebar-divider"></div>
-
     </div>
-    <!-- Sidebar Image -->
 </aside>
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
-    
         <!-- Paradox Footer Left Section -->
         <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    <!-- Facebook -->
-    <!-- Google + -->
-    <!-- Weibo -->
         <a href="http://weibo.com/5021230565/profile" target="_blank">
             <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
                 <span class="visuallyhidden">Weibo</span>
-            </button></a>
+            </button>
+        </a>
 </div>
+
+
         <!--Copyright-->
         <div id="copyright">
             Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Insane's Soul
@@ -456,9 +853,6 @@
                     <!-- Import JS File -->
 
     <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
-
-
-
     <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
 
 
@@ -486,112 +880,6 @@
         $('.fade').removeClass('out');
     }, 800);
 </script>
-
-
-
-
-
-    <!-- Leancloud -->
-    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-    <script>
-        AV.initialize('z2lHUWsQbrqyxbsi1L4NKXxR-gzGzoHsz', 'jWifvqxF3F92we5zVl5cgrxW');
-    </script>
-    <script type="text/ls-javascript" id="leancloud-views-script">
-    function showTime(Counter) {
-        var query = new AV.Query(Counter);
-        $('.leancloud-views_num').each(function() {
-            var url = $(this).attr('id').trim();
-            query.equalTo('url', url);
-            query.find({
-                success: function(results) {
-                    if (results.length === 0) {
-                        var content = '0 ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                        return;
-                    }
-                    for (var i = 0; i < results.length; i++) {
-                        var object = results[i];
-                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                    }
-                },
-                error: function(object, error) {
-                    console.log('Error: ' + error.code + ' ' + error.message);
-                }
-            });
-        });
-    }
-
-    function addCount(Counter) {
-      var Counter = AV.Object.extend('Counter');
-      url = $('.leancloud-views_num').attr('id').trim();
-      title = $('.leancloud-views_num').attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-      query.equalTo('url', url);
-      query.find({
-          success: function(results) {
-            if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment('time');
-                counter.save(null, {
-                    success: function(counter) {
-                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(counter, error) {
-                        console.log('Failed to save Visitor num, with error message: ' + error.message);
-                    }
-                });
-            } else {
-              var newcounter = new Counter();
-              newcounter.set('title', title);
-              newcounter.set('url', url);
-              newcounter.set('time', 1);
-              newcounter.save(null, {
-                  success: function(newcounter) {
-                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
-                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
-                      $(document.getElementById(url)).text(content);
-                  },
-                  error: function(newcounter, error) {
-                      console.log('Failed to create');
-                  }
-              });
-            }
-        },
-        error: function(error) {
-            console.log('Error:' + error.code + ' ' + error.message);
-        }
-      });
-    }
-    $(function() {
-        var Counter = AV.Object.extend('Counter');
-        if ($('.leancloud-views_num').length === 1) {
-            addCount(Counter);
-        } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-        }
-    });
-</script>
-
-
-
-
-    <!-- Busuanzi -->
-    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-   <!-- 畅言公共 js 代码 start -->
-<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyrV7vlR4">
-</script>
-<!-- 畅言公共 js 代码 end -->
-
-
-
-
-
 <!-- UC Browser Compatible -->
 <script>
 	var agent = navigator.userAgent.toLowerCase();
@@ -652,7 +940,7 @@
             lsloader.runInlineScript(item.id,item.id);
         }
     })()
-console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+// console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>
