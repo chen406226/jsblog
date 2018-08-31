@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    section {
+      min-width: 500px;
+    }
+    pre {
+      background-color: #000;
+      font-size: 16px;
+      color: aquamarine;
+    }
+    nav {
+      position: fixed;
+      top: 100px;
+      right: -80px;
+      width: 100px;
+      height: 500px;
+      transition: all .3s linear;
+      background-color: bisque;
+    }
+    nav:hover {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#jsejz">接收二进制文件流</a>
+  </nav>
+  <section>
+    <a name="jsejz">
+    <pre>
+    const data =await fetch(`${window.location.origin}/app${params.url}`,{
+      method:'POST',
+      headers:{
+        'Content-Disposition':'attachment;filename=company.xlsx',
+        'Content-Type':'application/x-www-form-urlencoded',
+        'accept':'attachment;filename=company.xlsx'
+      },
+      body:stringify({token,...params})
+    }).then(response => response.blob())
+    .then(blob => {
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = "company.xlsx";
+      a.click();                    
+    });
+    </pre>
+    </a>
+    <pre>
+    var xhr = new XMLHttpRequest()
+    xhr.responseType = "blob"
+    xhr.onload = () => {
+      if (xhr.status === 304 || xhr.status === 200) {
+        var blob = new Blob([xhr.response], {type: 'text/xls'});
+        var csvUrl = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = csvUrl;
+        a.download = "templete.csv";
+        a.click(); 
+      }
+    }
+    xhr.open("GET", 'http:&export_size=10')
+    xhr.send()
+    </pre>
+    <p>node传输文件</p>
+    <pre>
+    app.get('/file',(req,res)=>{
+      const dirpath = path.resolve(__dirname,'db/ck.csv')
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Content-Disposition", "attachment:filename=ck.csv");
+      res.header("Access-Control-Allow-Headers", "X-Requested-With");
+      res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+      res.header("X-Powered-By",' 3.2.1')
+      res.header("Content-Type", "application/json;charset=utf-8");
+      fs.readFile(dirpath,(err,doc)=>{
+        // const result = JSON.parse(doc.toString())
+        // res.json(result)
+        res.sendFile(path.resolve(__dirname,'db/ck.csv'))
+      })
+    })
+    </pre>
+    <p>java传输文件</p>
+    <pre>
+    import java.io.IOException;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    @RequestMapping("/db")
+    public String db() throws IOException {
+    	String mString = "hello";
+      try {
+    		mString = new String(Files.readAllBytes(Paths.get("G:\\db.json")));
+  		} catch (IOException e) {
+        e.printStackTrace();
+  		}
+  		return mString;
+    }
+    </pre>
+    <p>jdk 1.8 将base64转图片</p>
+    <pre>
+    import java.io.FileInputStream;
+    import java.io.FileNotFoundException;
+    import java.io.FileOutputStream;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.io.OutputStream;
+    import java.util.Base64;
+    import java.util.Base64.Decoder;
+    import java.util.Base64.Encoder;
+    public class App {
+      public static void main(String[] args) throws IOException {
+        Decoder decoder = Base64.getDecoder();
+        byte[] b = decoder.decode("/base64:string");
+        for (int i = 0; i < b.length; ++i) {
+          if (b[i] < 0) {
+            b[i] += 256;
+          }
+        }
+        OutputStream out;
+        try {
+          out = new FileOutputStream("F:/sd.jpg");
+          out.write(b);
+          out.flush();
+          out.close();
+        } catch (FileNotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+    }
+    </pre>
+    <p>node将base转为图片</p>
+    <pre>
+    if (key == 'avatar') {
+      let value = ctx.request.body.value.match(/base64,(.+)/)[1];
+      const url = username+'.jpg'
+      const dirpath=path.resolve(__dirname,"../../static/avatar/"+url);
+      let bitmap = new Buffer(value,'base64')
+      fs.writeFileSync(dirpath,bitmap)
+    }
+    </pre>
+  </section>
+</body>
+<script>
+
+
+</script>
+</html>
