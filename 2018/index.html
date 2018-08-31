@@ -7,6 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
     section {
       min-width: 500px;
     }
@@ -18,8 +22,9 @@
     nav {
       position: fixed;
       top: 100px;
-      right: -80px;
-      width: 100px;
+      /* right: -120px; */
+      right: 0;
+      width: 150px;
       height: 500px;
       transition: all .3s linear;
       background-color: bisque;
@@ -27,14 +32,23 @@
     nav:hover {
       right: 0;
     }
+    nav p{
+      text-align: center;
+    }
+    nav p a{
+      text-decoration: none;
+      color: darkkhaki;
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#jsejz">接收二进制文件流</a>
+    <p><a href="#jsejz">接收二进制文件流</a></p>
+    <P><a href="#fsejz">发送二进制文件流</a></P>
+    <P><a href="#base64">将base64转成图片</a></P>
   </nav>
   <section>
-    <a name="jsejz">
+    <a name="jsejz"></a>
     <pre>
     const data =await fetch(`${window.location.origin}/app${params.url}`,{
       method:'POST',
@@ -53,7 +67,7 @@
       a.click();                    
     });
     </pre>
-    </a>
+    
     <pre>
     var xhr = new XMLHttpRequest()
     xhr.responseType = "blob"
@@ -70,6 +84,7 @@
     xhr.open("GET", 'http:&export_size=10')
     xhr.send()
     </pre>
+    <a name="fsejz"></a>
     <p>node传输文件</p>
     <pre>
     app.get('/file',(req,res)=>{
@@ -103,6 +118,7 @@
   		return mString;
     }
     </pre>
+    <a name="base64"></a>
     <p>jdk 1.8 将base64转图片</p>
     <pre>
     import java.io.FileInputStream;
