@@ -22,35 +22,194 @@
     nav {
       position: fixed;
       top: 100px;
-      /* right: -120px; */
-      right: 0;
+      right: -120px;
+      /* right: 0; */
       width: 150px;
       height: 500px;
       transition: all .3s linear;
       background-color: bisque;
+      padding: 10px 0;
+      border-radius: 10px 0 0 10px;
+      padding-top: 30px;
+    }
+    nav b{
+      position: absolute;
+      top: 5px;
+      left: 10px;
     }
     nav:hover {
       right: 0;
     }
     nav p{
-      text-align: center;
+      text-align: left;
+      margin: 5px 0;
+      border: 1px dashed rgb(92, 219, 7);
+      color: rgb(49, 101, 197);
+      border-radius: 5px;
     }
     nav p a{
       text-decoration: none;
-      color: darkkhaki;
+    }
+    .width100{
+      width: 100%;
     }
   </style>
 </head>
 <body>
   <nav>
-    <p><a href="#jsejz">接收二进制文件流</a></p>
-    <P><a href="#fsejz">发送二进制文件流</a></P>
-    <P><a href="#base64">将base64转成图片</a></P>
+    <b>←</b>
+    <p>1.<a href="#es6">es6,7的原生实现</a></p>
+    <p>1.<a href="#cyzz">常用正则表达式</a></p>
+    <p>1.<a href="#jsejz">接收二进制文件流</a></p>
+    <P>2.<a href="#fsejz">发送二进制文件流</a></P>
+    <P>3.<a href="#base64">将base64转成图片</a></P>
   </nav>
   <section>
-    <a name="jsejz"></a>
+    <a name="es6">es6,7的原生实现</a>
+    <cite>想起之前对js的摸索，又看了一遍，果然有的自己都看不懂了</cite>
     <pre>
-    const data =await fetch(`${window.location.origin}/app${params.url}`,{
+      Function.prototype.cal=function(a){
+        var arr=Array.prototype.slice.call(arguments,1)
+        //这里小用一下call只为获得参数
+        a.__proto__.fn=this;
+        return a.fn(...arr);||a.fn.apply(a,arr)()
+        //就一句话谁打点调用的就是谁 so指向a
+      }
+      var argum=[1,2,3,2,3,4,5]
+      console.log(Array.prototype.slice.cal(argum,1))
+      创建一个cal方法实现call功能
+    </pre>
+    <pre>
+      String.prototype.sli = Array.prototype.slice
+      //js中字符串类型也有length也可以根据索引值枚举，所以数组的方法都可直接调用
+      var obj={num:10,getCount:function(){return this.num}}
+      var unboundBind=Function.prototype.bind;
+      var getc=Function.prototype.call.bind(unboundBind)(window.getCount,window)
+      var getc=Function.prototype.call.bind(obj.getCount,obj)()
+      //call里面的this指向了obj.getCount了.函数打点.call()意思不就是call里面的this指向前面函数吗
+      //bind后面的参数是默认的第一参数啊,所以等价于
+      var getc=Function.prototype.call.bind(obj.getCount)(obj)
+      console.log(getc)
+    </pre>
+    <pre>
+    m=Array.prototype.filter.call("abcdefghijk",function(val){
+      return ["a","e","i","o","u"].includes(val);
+    }).join("")
+    [].join.call("abc","|")
+    var join=Function.prototype.call.bind([].join)
+    //这句话相当于 [].join.call(args,args)
+    console.log(join("sljfd","|"))
+    </pre>
+    <p>bind的实现</p>
+    <pre>
+    var obj={"name":"ck"}
+    var ob={"name":"wq"}
+    fn=function(a,b,c,d){
+        return this.name;
+    }
+    Function.prototype.bin=function(a){
+        var arr=Array.prototype.slice.call(arguments,1)
+        a.__proto__.fn=this;
+        return function(){
+            var array=Array.prototype.slice.call(arguments);
+            var ar=arr.concat(array)
+            return a.fn(...ar)
+    // 或者  fn.apply(a,ar)
+        };
+    }
+    var ff=fn.bin(obj)(5,2,3,4)
+    </pre>
+
+    <pre>
+      最常见的错误 给html添加文本了
+      var write = document.write
+      write('hello')  //error   直接去调用一个函数,this指向了window
+      -write.bind(document)('hello')
+      -write.call(document,'hello')
+      -write.apply(document,['hello'])
+
+    </pre>
+    <p>filter实现</p>
+    <pre>
+    Array.prototype.filter=function(callback){
+      var array=[];
+      for (let i= 0; i < this.length; i++) {
+        var m=callback(this[i])
+        if(m){
+          array.push(this[i])
+        }
+      } 
+      return array
+    }
+    </pre>
+    <p>map实现</p>
+    <pre>
+    Array.prototype.map=function(callback){
+      var array=[]
+      for (let i = 0; i < this.length; i++) {
+        var m=callback(this[i])
+        array.push(m)
+      }
+      return array
+    }
+    </pre>
+    <p>reducer实现</p>
+    <pre>
+    Array.prototype.reducer=function(callback){
+      var m;
+      for (let i = 0; i < this.length; i++) {
+        if(i==0){
+          m=this[0];
+        }else{
+          m=callback(m,this[i])
+        }
+      }
+      return m
+    }
+    console.log(arr.reducer((a,b)=>{
+      return a+b
+    }))
+    </pre>
+
+
+    <a name="cyzz">常用正则表达式</a>
+    <pre>
+    验证数字：^[0-9]*$
+    验证n位的数字：^\d{n}$
+    验证至少n位数字：^\d{n,}$
+    验证m-n位的数字：^\d{m,n}$
+    验证零和非零开头的数字：^(0|[1-9][0-9]*)$
+    验证有两位小数的正实数：^[0-9]+(.[0-9]{2})?$
+    验证有1-3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$
+    验证非零的正整数：^\+?[1-9][0-9]*$
+    验证非零的负整数：^\-[1-9][0-9]*$
+    验证非负整数（正整数 + 0）  ^\d+$
+    验证非正整数（负整数 + 0）  ^((-\d+)|(0+))$
+    验证长度为3的字符：^.{3}$
+    验证由26个英文字母组成的字符串：^[A-Za-z]+$
+    验证由26个大写英文字母组成的字符串：^[A-Z]+$
+    验证由26个小写英文字母组成的字符串：^[a-z]+$
+    验证由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
+    验证由数字、26个英文字母或者下划线组成的字符串：^\w+$
+    验证用户密码:^[a-zA-Z]\w{5,17}$ 正确格式为：以字母开头，长度在6-18之间，只能包含字符、数字和下划线。
+    验证是否含有 ^%&',;=?$\" 等字符：[^%&',;=?$\x22]+
+    验证汉字：^[\u4e00-\u9fa5],{0,}$
+    验证Email地址：^\w+[-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+    验证InternetURL：^http://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$ ；^[a-zA-z]+://(w+(-w+)*)(.(w+(-w+)*))*(?S*)?$
+    验证电话号码：^(\d3,4|\d{3,4}-)?\d{7,8}$：--正确格式为：XXXX-XXXXXXX，XXXX-XXXXXXXX，XXX-XXXXXXX，XXX-XXXXXXXX，XXXXXXX，XXXXXXXX。
+    验证身份证号（15位或18位数字）：^\d{15}|\d{}18$
+    验证一年的12个月：^(0?[1-9]|1[0-2])$ 正确格式为：“01”-“09”和“10”“12”
+    验证一个月的31天：^((0?[1-9])|((1|2)[0-9])|30|31)$    正确格式为：01、09和10、31。
+    整数：^-?\d+$
+    非负浮点数（正浮点数 + 0）：^\d+(\.\d+)?$
+    正浮点数   ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$
+    负浮点数  ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+    浮点数  ^(-?\d+)(\.\d+)?$
+    </pre>
+    <a name="jsejz"></a>
+    <p>原生与fetch下载</p>
+    <pre>
+    const data =await fetch(`${window.location.origin}:3000/app${params.url}`,{
       method:'POST',
       headers:{
         'Content-Disposition':'attachment;filename=company.xlsx',
@@ -167,5 +326,10 @@
 <script>
 
 
+function list(){
+  return [].slice.call(arguments)
+}
+var l = list.bind(null,3)(1,2)
+console.log(l)
 </script>
 </html>
