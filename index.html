@@ -474,7 +474,9 @@
 </div>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=60%  height=450 src="http://music.163.com/outchain/player?type=0&id=
 945120748&auto=1&height=430"></iframe>
-    
+<div style="margin: 20px 5px 0;" class="mdl-shadow--2dp mdl-cell mdl-cell--8-col index-top-block">
+    <span>公告：</span><span id="info"></span>
+</div>
 <!-- <script type="text/ls-javascript" id="thumbnail-script">
     var randomNum;
 
@@ -685,11 +687,14 @@ It will not impact the appearance and can give developers a lot of support :)
                     <!-- Facebook -->
                     <!-- Google + -->
                     <!-- Weibo -->
-                    <a href="http://weibo.com/5021230565/profile" target="_blank">
-                        <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
-                            <span class="visuallyhidden">Weibo</span>
-                        </button>
-                    </a>
+                    <p>
+                        <a style="margin-bottom: -0.5em;" href="http://weibo.com/5021230565/profile" target="_blank">
+                            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                                <span class="visuallyhidden">Weibo</span>
+                            </button>
+                        </a>
+                        <span>总浏览次数&nbsp;&nbsp;</span><b style="color:seagreen;" id="browses"></b>
+                    </p>
                     <!-- Instagram -->
                     <!-- Tumblr -->
                     <!-- Github -->
@@ -712,6 +717,7 @@ It will not impact the appearance and can give developers a lot of support :)
                 <!--Copyright-->
                 <div id="copyright">
                     Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Insane's Soul
+                    <p><img src="https://images.51rz.com/images/rebuild/pc/img/wj.png" alt=""><span>浙公网安备 **号 </span></p>
                 </div>
 
                 <!-- Paradox Footer Right Section -->
@@ -738,15 +744,40 @@ It will not impact the appearance and can give developers a lot of support :)
                     <!-- Import JS File -->
 
     <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
-
-
-
-    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
-
-
-
+    <script>lsloader.load("js_js","/js/js.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
     <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
-
+<script>
+    var $browses = $("#browses");
+    var $info = $("#info");
+	function getdata(){
+		$.get(window.location.origin+':9999/sys/info',function(data){
+            $browses.text(data.count);
+            if (data.msg) {
+                $info.html(data.msg)
+            }else{
+                $info.parent().css('display','none')
+            }
+        })
+    }
+    function setbrowses(){
+		$.ajax({
+			type:"POST",
+			url:window.location.origin+':9999/sys/update',
+			// data:{
+            //     msg:''
+			// },
+			dataType:"json",
+			success:function(data){
+				
+			},
+			error:function(){
+				console.log('请求失败')
+			}
+		})
+    }
+    getdata()
+    setbrowses()
+</script>
 
 <script type="text/ls-javascript" id="NProgress-script">
     NProgress.configure({
