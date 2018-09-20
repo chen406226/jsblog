@@ -259,6 +259,9 @@ var mainState = function(game){
     }
   };
   this._setItem = function(id, v){
+    if (this.game.levelstep == 0&&id==2) {
+      return;
+    }
     this.items.val[id]+=v;
     this.items.txt[id].text = this.items.val[id];
   };
