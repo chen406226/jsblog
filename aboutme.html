@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>about me</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow-x: hidden;
+    }
+    div#cover{
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-image: paint(starry-sky);
+      transition: all 5s ease;
+      width: 200%;
+      animation:mymove 5s infinite;
+      -webkit-animation:mymove 30s infinite;
+    }
+    @keyframes mymove
+    {
+      from {
+        transform: translateX(0) translateY(-200px);
+      }
+      to {transform: translateX(-400px) translateY(0);}
+    }
+    div.con {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      color: #fff;
+    }
+    .info {
+      position: relative;
+      z-index: 11;
+      width: 1000px;
+      margin: 0 auto;
+      /* height: 1200px; */
+      color: #fff;
+    }
+    .info p{
+      height: 100px;
+    }
+    .video,.pic {
+      display: flex;
+    }
+    .video .video_c {
+      padding-top: 50px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="cover"></div>
+  <div class="con">
+    <canvas id="mycanvas"></canvas>
+  </div>
+  <div class="info">
+    <div class="video">
+      <div class="video_c">
+        <a href="http://insane.online">
+          <span>个人主页</span>
+        </a>
+        <video controls="controls" src="./ccc.mp4" width="200" height="200"></video>
+      </div>
+      <div class="video_c">
+        <a href="http://insane.online/bear">
+          <p>
+
+          </p>
+          <span>一个有趣放松的地方</span>
+          <span></span>
+        </a>
+        <video controls="controls" src="./ccc.mp4" width="200" height="200"></video>
+      </div>
+      <div class="video_c">
+        <video controls="controls" src="./ccc.mp4" width="200" height="200"></video>
+      </div>
+    </div>
+    <div class="pic">
+
+    </div>
+  </div>
+  <script>
+    var cov = document.getElementById('cover')
+    cov.style.height = (window.innerHeight+200)+'px';
+  </script>
+
+</body>
+  <script>
+
+    let blobURL = URL.createObjectURL( new Blob([ '(', function(){ 
+      class StarrySky { 
+        paint (ctx, paintSize, properties) {
+          ctx.fillRect(0, 0, paintSize.width, paintSize.height); 
+          let xMax= paintSize.width; let yMax = paintSize.height;
+          ctx.fillRect(0, 0, xMax, yMax);
+          let hmTimes = xMax/2 + yMax/2; 
+          console.log(hmTimes)
+          for (let i = 0; i <= hmTimes; i++) {
+            let x = Math.floor((Math.random() * xMax) + 1); 
+            let y = Math.floor((Math.random() * yMax) + 1);
+            let size = Math.floor((Math.random() * 2) + 1); 
+            let opacityOne = Math.floor((Math.random() * 9) + 1); 
+            let opacityTwo = Math.floor((Math.random() * 9) + 1); 
+            let hue = Math.floor((Math.random() * 360) + 1); 
+            ctx.fillStyle = "hsla("+hue+", 30%, 80%, ."+opacityOne+opacityTwo+")";
+            ctx.fillRect(x, y, size, size);
+          }
+        }
+      } registerPaint('starry-sky', StarrySky); }.toString(), ')()'
+    ], { type: 'application/javascript' } ) ); CSS.paintWorklet.addModule(blobURL);
+  </script>
+  <script>
+    var mycanvas = document.getElementById('mycanvas')
+    mycanvas.width = w_width = window.innerWidth;
+    mycanvas.height = w_height = window.innerHeight;
+    function c_random(min,max) {
+      return parseInt(Math.random()*(max-min+1)+min);
+    }
+    function torgba(m) {
+      var red = m.substr(1,2)
+      var green = m.substr(3,2)
+      var blue = m.substr(5,2)
+      return 'rgba('+parseInt(red,16)+','+parseInt(green,16)+','+parseInt(blue,16)+','+c_random(4,9)/10+')'
+    }
+    var stepnum = [1,2,-1,-2,1.5,-1.5,1.2,-1.2,1.7,-1.7]
+    var fontarr = ['20px Arial','25px Arial','30px Arial','35px Arial']
+    var colorarr = ['#19e1c2','#9cddef','#f5eb8a','#c34246','#446462']
+    function Tagmove(){
+      this.tagarr = [];
+      this.init()
+    }
+    Tagmove.prototype.init=function(){
+      this.ctx = mycanvas.getContext("2d");
+      this.render();
+      this.timer = setInterval(()=>{this.update()},100)
+    }
+    Tagmove.prototype.render=function(){
+      this.ctx.clearRect(0,0,w_width,w_height);
+      this.tagarr.forEach((items,index)=>{
+        this.ctx.font = items.fs;
+        this.ctx.fillStyle = items.color;
+        this.ctx.fillText(items.name,items.x,items.y)
+      })
+    }
+    Tagmove.prototype.update=function(){
+      this.tagarr.forEach((items,index)=>{
+        if (items.x>w_width-100 || items.x<50) {
+          items.xstep = -items.xstep
+        }
+        if (items.y>w_height-100 || items.y<50) {
+          items.ystep = -items.ystep
+        }
+        items.x = items.x+items.xstep
+        items.y = items.y+items.ystep
+      });
+      this.render()
+    }
+    Tagmove.prototype.addTag = function (name){
+      if (name instanceof Array) {
+        name.forEach((item,index)=>{
+          var obj = {
+            name:item,x:c_random(50,w_width-100),y:c_random(50,w_height-100),xstep:stepnum[c_random(0,9)],ystep:stepnum[c_random(0,9)],fs:fontarr[c_random(0,3)],color:torgba(colorarr[c_random(0,4)])
+          }
+          this.tagarr.push(obj)
+        });
+        return ;
+      }
+      Array.prototype.forEach.call(arguments,(item,index)=>{
+        var obj = {
+          name:item,x:c_random(50,w_width-100),y:c_random(50,w_height-100),xstep:stepnum[c_random(0,9)],ystep:stepnum[c_random(0,9)],fs:fontarr[c_random(0,3)],color:torgba(colorarr[c_random(0,4)])
+        }
+        this.tagarr.push(obj)
+      })
+    }
+
+    var t = new Tagmove()
+    t.addTag('Java','JavaScript','Html5','Css3','Node','React','Vue','Echarts','Hightcharts','Es6/7','Webpack')
+    var tg =['Canvas','Koa','Express','SpringBoot','Mongodb','Nginx']
+    t.addTag(tg)
+  </script>
+</html>
