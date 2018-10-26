@@ -59,10 +59,11 @@
   <nav>
     <b>←</b>
     <p>1.<a href="#es6">es6,7的原生实现</a></p>
-    <p>1.<a href="#cyzz">常用正则表达式</a></p>
-    <p>1.<a href="#jsejz">接收二进制文件流</a></p>
-    <P>2.<a href="#fsejz">发送二进制文件流</a></P>
-    <P>3.<a href="#base64">将base64转成图片</a></P>
+    <p>2.<a href="#cyzz">常用正则表达式</a></p>
+    <p>3.<a href="#jsejz">接收二进制文件流</a></p>
+    <P>4.<a href="#fsejz">发送二进制文件流</a></P>
+    <P>5.<a href="#base64">将base64转成图片</a></P>
+    <P>6.<a href="#kelihua">函数科里化</a></P>
   </nav>
   <section>
     <a name="es6">es6,7的原生实现</a>
@@ -320,6 +321,25 @@
       let bitmap = new Buffer(value,'base64')
       fs.writeFileSync(dirpath,bitmap)
     }
+    </pre>
+    <a href="#kelihua"></a>
+    <p>函数科里化实现</p>
+    <pre>
+      function kk(fn){
+        var nm = fn.length;
+        var now = []
+        return function mg(m){
+          now = now.concat([].slice.call(arguments));
+          if (now.length == nm) {
+            return fn.apply(null,now)
+          }else{
+            return mg
+          }
+        }
+      }
+    
+      const df = kk((a,b)=>{return a+b})
+      df(4)(3);
     </pre>
   </section>
 </body>
