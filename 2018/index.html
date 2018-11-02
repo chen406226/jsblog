@@ -341,6 +341,31 @@
       const df = kk((a,b)=>{return a+b})
       df(4)(3);
     </pre>
+    <p>jquery选择器源码</p>
+    <pre>
+      (function(){ 
+        //暴露外部的引用 防污染
+        var jQuery = window.jQuery = window.$ = function(selector){ 
+          return new jQuery.fn.init(selector);  //新分配一个堆空间
+        } 
+        //添加原型事件 
+        jQuery.fn = jQuery.prototype = { 
+          init:function(selector){ 
+            var element = document.getElementsByTagName(selector); 
+            Array.prototype.push.apply(this,element); 
+            return this; 
+          }, 
+          length:0, 
+          size:function(){ 
+            return this.length; 
+          } 
+        } 
+        //将init的原型引用成jQuery的原型 
+        jQuery.fn.init.prototype = jQuery.fn; //将size注册到 分配的空间上
+      })(); 
+      var result = $("div"); 
+      alert($('div').size()); 
+    </pre>
   </section>
 </body>
 <script>
