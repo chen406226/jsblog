@@ -64,6 +64,9 @@
     <P>4.<a href="#fsejz">发送二进制文件流</a></P>
     <P>5.<a href="#base64">将base64转成图片</a></P>
     <P>6.<a href="#kelihua">函数科里化</a></P>
+    <P>7.<a href="#jqxuanzeqi">jq选择器实现</a></P>
+    <P>8.<a href="#defineProperty">vue思想</a></P>
+    <P>9.<a href="#paixu">简单排序</a></P>
   </nav>
   <section>
     <a name="es6">es6,7的原生实现</a>
@@ -171,7 +174,11 @@
       return a+b
     }))
     </pre>
-
+    <pre>
+      Array.prototype.max = function(){
+        return Math.max.apply(null,this)
+      }
+    </pre>
 
     <a name="cyzz">常用正则表达式</a>
     <pre>
@@ -341,6 +348,7 @@
       const df = kk((a,b)=>{return a+b})
       df(4)(3);
     </pre>
+    <a href="#jqxuanzeqi"></a>
     <p>jquery选择器源码</p>
     <pre>
       (function(){ 
@@ -365,6 +373,173 @@
       })(); 
       var result = $("div"); 
       alert($('div').size()); 
+    </pre>
+    <a href="#defineProperty"></a>
+    <p>简单用object.defineProperty实现双向绑定pub-sub思想</p>
+    <pre>
+      input type="text" v-model='name'
+      p v-html='name'
+      input type="text" v-model='age'
+      p v-html='age'
+      
+      var inp = document.getElementsByTagName('input')
+      var p = document.getElementsByTagName('p')
+
+      function Init({data={}}){
+        defineProperty(data);
+      }
+
+      function defineProperty(data){
+        if (!data || typeof data != 'object') {
+          return;
+        }
+        Object.keys(data).forEach((key)=>{binddefineProperty(data,key,data[key])})
+      }
+
+      function Pub(key,obj){
+        this.pubs = check(key);
+        this.pubhtml = checkhtml(key);
+        this.node = obj;
+        this.key = key
+        this.addevent()
+      }
+
+      Pub.prototype.listens = function (v){
+        this.pubs.forEach((item)=>{
+          if (item.tagName == 'INPUT') {
+            item.value = v
+          }
+        })
+        this.pubhtml.forEach((item)=>{
+          item.innerHTML = v
+        })
+      }
+      Pub.prototype.addevent = function(){
+        this.pubs.forEach((item)=>{
+          item.addEventListener('input', (e)=>{
+            this.node[this.key] = e.target.value;
+          })
+        })
+      }
+      function binddefineProperty(obj,key,val){
+        var pub = new Pub(key,obj); //需要延迟才能获得__proto__.listens
+        if (val instanceof Object) {
+          defineProperty(val)
+        }
+        pub.listens(val)
+        Object.defineProperty(obj,key,{
+          enumerable:true,//是否可通过for-in 获得  inerator
+          configurable:false,//能否delete等修改属性
+          get:function(){
+            return val
+          },
+          set:function(v){
+            val = v
+            pub.listens(v)
+          }
+        })
+      }
+
+      function check(key){
+        return Array.prototype.filter.call(inp,(item)=>{
+          if (item.getAttribute('v-model') == key) {
+            return item;
+          }
+        })
+      }
+
+      function checkhtml(key){
+        return Array.prototype.filter.call(p,(item)=>{
+          if (item.getAttribute('v-html') == key) {
+            return item;
+          }
+        })
+      }
+
+      var v = new Init({
+        data:{
+          name:1,
+          age:18
+        }
+      })
+    </pre>
+    <a href="#yibubiancheng">异步编程理解</a>
+    <p>
+      深入浅出node-p50 (异步I/O实现现状)
+    </p>
+    <p>1 .read。他是最原始。性能最低的一种，通过重复调用检查I/O的状态来完成完整数据的读取在得到最终数据前cpu一直好用在等待上</p>
+    <p>2 .select。他是在read的基础上改进的一种方案，通过对文件描述符上的事件状态来进行判断，（限制在了1024长度的数组存储状态so 最多同时检查1024个文件描述符）</p>
+    <p>3 .poll。改方案select升级版，采用连表方式避免数组长度限制，还可避免不需要的检查，但是当描述符过多时性能低（链表结构 运算对数提升）</p>
+    <p>4 .epoll。linux下效率最高i/o时间通知机制，进入轮询时候没有检查的i/o将会进行休眠，直到时间唤醒，真实利用事件通知，执行回调的方式而不是遍历查询不会造成cpu浪费，</p>
+    <p>5 .kqueue。类似epoll只在freeBSD系统运行</p>
+    <a href="#paixu"></a>
+    <p>冒泡排序，快速，选择</p>
+    <pre>
+      function(){
+        for (var i = 0; i < arr.length; i++) {
+          // 冒泡  
+          // //先把小的排在前
+          // for (var j = arr.length-1; j >=i; j--) {
+          //   if (arr[j]< arr[j-1]) {
+          //     var me = arr[j]
+          //     arr[j] = arr[j-1]
+          //     arr[j-1] = me
+          //   }    
+          // }
+          //or
+          for (var j = 0; j< arr.length-1-i; j++) {
+            //先把大的排后面
+            if (arr[j]>arr[j+1]) {
+              var me = arr[j]
+              arr[j] = arr[j+1]
+              arr[j+1] = me
+            }    
+            console.log(3) //运算次数(n*2-n)/2  so 时间复杂度归为平方级算法
+          }
+        }
+      }
+      快速
+      function q(arr){
+        //思想二分法 迭代缩小范围
+        var biaogan = arr[0];
+        var big = []
+        var small = []
+        for (var i = 1; i < arr.length; i++) {
+          if (arr[i]>biaogan) {
+            big.push(arr[i])
+          }else{
+            small.push(arr[i])
+          }
+        }
+        console.log(3) //  线性 最坏1情况也是n^2
+        if (small.length==0) {
+          big.unshift(biaogan);
+          return big;
+        }else if (big.length==0) {
+          small.push(biaogan)
+          return small
+        }else{
+          return q(small).concat(biaogan,q(big))
+        }
+      }
+      console.log(q(array))
+      // 选择
+      function so(array){
+        //思想每次循环都找出最小值
+        var min_i,temp
+        for (let i = 0; i < array.length; i++) {
+          min_i = i
+          for (let j = i+1; j < array.length; j++) {
+            if (array[min_i]>array[j]) { // <  对比次数n^2  对象
+              min_i = j
+            }      
+          }
+          temp = array[i]
+          array[i] = array[min_i]
+          array[min_i] = temp
+        }
+        return array
+      }
     </pre>
   </section>
 </body>
