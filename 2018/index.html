@@ -67,6 +67,7 @@
     <P>7.<a href="#jqxuanzeqi">jq选择器实现</a></P>
     <P>8.<a href="#defineProperty">vue思想</a></P>
     <P>9.<a href="#paixu">简单排序</a></P>
+    <P>10.<a href="#yibubiancheng">异步解决方案</a></P>
   </nav>
   <section>
     <a name="es6">es6,7的原生实现</a>
@@ -329,7 +330,7 @@
       fs.writeFileSync(dirpath,bitmap)
     }
     </pre>
-    <a href="#kelihua"></a>
+    <a name="kelihua"></a>
     <p>函数科里化实现</p>
     <pre>
       function kk(fn){
@@ -348,7 +349,7 @@
       const df = kk((a,b)=>{return a+b})
       df(4)(3);
     </pre>
-    <a href="#jqxuanzeqi"></a>
+    <a name="jqxuanzeqi"></a>
     <p>jquery选择器源码</p>
     <pre>
       (function(){ 
@@ -374,7 +375,7 @@
       var result = $("div"); 
       alert($('div').size()); 
     </pre>
-    <a href="#defineProperty"></a>
+    <a name="defineProperty"></a>
     <p>简单用object.defineProperty实现双向绑定pub-sub思想</p>
     <pre>
       input type="text" v-model='name'
@@ -422,7 +423,7 @@
         })
       }
       function binddefineProperty(obj,key,val){
-        var pub = new Pub(key,obj); //需要延迟才能获得__proto__.listens
+        var pub = new Pub(key,obj); 
         if (val instanceof Object) {
           defineProperty(val)
         }
@@ -463,7 +464,7 @@
         }
       })
     </pre>
-    <a href="#yibubiancheng">异步编程理解</a>
+    <a name="yibubiancheng">异步编程理解</a>
     <p>
       深入浅出node-p50 (异步I/O实现现状)
     </p>
@@ -472,7 +473,7 @@
     <p>3 .poll。改方案select升级版，采用连表方式避免数组长度限制，还可避免不需要的检查，但是当描述符过多时性能低（链表结构 运算对数提升）</p>
     <p>4 .epoll。linux下效率最高i/o时间通知机制，进入轮询时候没有检查的i/o将会进行休眠，直到时间唤醒，真实利用事件通知，执行回调的方式而不是遍历查询不会造成cpu浪费，</p>
     <p>5 .kqueue。类似epoll只在freeBSD系统运行</p>
-    <a href="#paixu"></a>
+    <a name="paixu"></a>
     <p>冒泡排序，快速，选择</p>
     <pre>
       function(){
